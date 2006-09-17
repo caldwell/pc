@@ -3,9 +3,11 @@
 sub compute ($) {
 	$i = eval("use bigint; $_[0]");
 	$n = eval("use bignum; $_[0]");
+	$r = eval("use bigrat; $_[0]");
 	$a = eval($_[0]);
 	printf($i->copy()->bfloor(). " ".$i->as_hex." %#o",$a);
 	printf " %.10s",$n if $i->copy()->bfloor()."" ne $n."";
+	print  " $r"       if $i->copy()->bfloor()."" ne $r."" && $n."" ne $r."";
 	printf(" '%c'",$a) if $a >= ord ' ' && $a <= ord '~';
 	print "\n";
 }
