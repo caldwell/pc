@@ -1,6 +1,14 @@
 #!/usr/bin/perl
 
-while (<>) {
+sub compute ($) {
 	$a = eval($_[0]);
 	printf("%d 0x%x 0%o %f\n",$a,$a,$a,$a);
+}
+
+if ($#ARGV != -1) {
+	compute $_ foreach (@ARGV);
+} else {
+	while (<>) {
+		compute($_);
+	}
 }
