@@ -2,7 +2,9 @@
 
 sub compute ($) {
 	$a = eval($_[0]);
-	printf("%d 0x%x 0%o %f\n",$a,$a,$a,$a);
+	printf("%d 0x%x 0%o %f",$a,$a,$a,$a);
+	printf(" '%c'",$a) if $a >= ord ' ' && $a <= ord '~';
+	print "\n";
 }
 
 if ($#ARGV != -1) {
