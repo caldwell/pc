@@ -9,11 +9,11 @@ sub compute ($) {
 	$r = eval("use bigrat; $_[0]");
 	$a = eval($_[0]);
 	$h = "0x". comma(($i->as_hex =~ /0x(.*)/)[0],4);
-	printf(comma($i->copy()->bfloor()."",3). " $h %#o",$a);
+	printf comma($i->copy()->bfloor()."",3). " $h %#o",$a;
 	printf " %.10s",$n if $i->copy()->bfloor()."" ne $n."";
 	print  " $r"       if $i->copy()->bfloor()."" ne $r."" && $n."" ne $r."";
-	printf(" '%c'",$a) if $a >= ord ' ' && $a <= ord '~';
-	print "\n";
+	printf " '%c'",$a  if $a >= ord ' ' && $a <= ord '~';
+	print  "\n";
 }
 
 if ($#ARGV != -1) {
