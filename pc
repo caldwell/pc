@@ -1,0 +1,6 @@
+#!/usr/bin/perl
+
+while (<>) {
+	$a = eval($_[0]);
+	printf("%d 0x%x 0%o %f\n",$a,$a,$a,$a);
+}
