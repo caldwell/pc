@@ -1,11 +1,15 @@
 #!/usr/bin/perl
 
+sub revstr($) { join "", reverse split //, $_[0] } # Reverse the characters in a string.
+sub comma($$) { revstr join(",", unpack("(A$_[1])*", revstr($_[0]))) }
+
 sub compute ($) {
 	$i = eval("use bigint; $_[0]");
 	$n = eval("use bignum; $_[0]");
 	$r = eval("use bigrat; $_[0]");
 	$a = eval($_[0]);
-	printf($i->copy()->bfloor(). " ".$i->as_hex." %#o",$a);
+	$h = "0x". comma(($i->as_hex =~ /0x(.*)/)[0],4);
+	printf(comma($i->copy()->bfloor()."",3). " $h %#o",$a);
 	printf " %.10s",$n if $i->copy()->bfloor()."" ne $n."";
 	print  " $r"       if $i->copy()->bfloor()."" ne $r."" && $n."" ne $r."";
 	printf(" '%c'",$a) if $a >= ord ' ' && $a <= ord '~';
