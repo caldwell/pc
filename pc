@@ -5,7 +5,7 @@ sub comma($$) { revstr join(",", unpack("(A$_[1])*", revstr($_[0]))) }
 
 sub compute ($) {
 	$_[0] =~ s/(\d+)([kmgtpezy])/($1*1024**(index("kmgtpezy","$2")+1))/g;
-	$i = eval("use bigint; $_[0]");
+	$i = eval("use bigint; $_[0]"); die "$@" if $@;
 	$n = eval("use bignum; $_[0]");
 	$r = eval("use bigrat; $_[0]");
 	$a = eval($_[0]);
