@@ -5,14 +5,16 @@ sub comma($$) { revstr join(",", unpack("(A$_[1])*", revstr($_[0]))) }
 
 sub compute ($) {
 	$_[0] =~ s/\b(\d+)([kmgtpezy])/($1*1024**(index("kmgtpezy","$2")+1))/g;
-	$i = eval("use bigint; $_[0]"); die "$@" if $@;
+	$i = eval("use bigint; $_[0]");
 	$n = eval("use bignum; $_[0]");
 	$r = eval("use bigrat; $_[0]");
 	$a = eval($_[0]);
-	$h = "0x". comma(($i->as_hex =~ /0x(.*)/)[0],4);
-	printf comma($i->copy()->bfloor()."",3). " $h %#o",$a;
-	printf " %.10s",$n if $i->copy()->bfloor()."" ne $n."";
-	print  " $r"       if $i->copy()->bfloor()."" ne $r."" && $n."" ne $r."";
+	$is = "";
+	eval { $is = $i->copy()->bfloor().""; };
+	$h = eval { "0x". comma(($i->as_hex =~ /0x(.*)/)[0],4);} || sprintf "%#x", $i;
+	printf comma($is,3). " $h %#o",$a;
+	printf " %.15s",$n if $is ne $n."";
+	print  " $r"       if $is ne $r."" && $n."" ne $r."";
 	printf " '%c'",$a  if $a >= ord ' ' && $a <= ord '~';
 	print  "\n";
 }
