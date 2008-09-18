@@ -4,21 +4,21 @@ sub revstr($) { join "", reverse split //, $_[0] } # Reverse the characters in a
 sub comma($$) { revstr join(",", unpack("(A$_[1])*", revstr($_[0]))) }
 
 sub compute ($) {
-	$_[0] =~ s/\b(\d+)([kmgtpezy])/($1*1024**(index("kmgtpezy","$2")+1))/g;
-	$i = eval("use bigint; $_[0]");
-	$n = eval("use bignum; $_[0]");
-	$r = eval("use bigrat; $_[0]");
-	$a = eval($_[0]);
-	$is = "";
-	eval { $is = $i->copy()->bfloor().""; };
-	$hs = eval { $i->as_hex; } || sprintf "%#x", $i;
-	$ic = comma($is,3);
-	$hc = "0x". comma(($hs =~ /0x(.*)/)[0], 4);
-	print "$ic";
-	print " $is" if $ic ne $is;
-	print " $hc";
-	print " $hs" if $hc ne $hs;
-	printf " %#o", $a;
+    $_[0] =~ s/\b(\d+)([kmgtpezy])/($1*1024**(index("kmgtpezy","$2")+1))/g;
+    $i = eval("use bigint; $_[0]");
+    $n = eval("use bignum; $_[0]");
+    $r = eval("use bigrat; $_[0]");
+    $a = eval($_[0]);
+    $is = "";
+    eval { $is = $i->copy()->bfloor().""; };
+    $hs = eval { $i->as_hex; } || sprintf "%#x", $i;
+    $ic = comma($is,3);
+    $hc = "0x". comma(($hs =~ /0x(.*)/)[0], 4);
+    print "$ic";
+    print " $is" if $ic ne $is;
+    print " $hc";
+    print " $hs" if $hc ne $hs;
+    printf " %#o", $a;
     if ($i > 1024) {
         use POSIX;
         my $exp = POSIX::floor(log($a)/log(1024));
@@ -26,16 +26,16 @@ sub compute ($) {
         $s =~ s/([\d.]{4}).*/$1/;
         print " $s", [qw(B KB MB GB TB PB EB)]->[$exp];
     }
-	printf " %.15s",$n if $is ne $n."";
-	print  " $r"       if $is ne $r."" && $n."" ne $r."";
-	printf " '%c'",$a  if $a >= ord ' ' && $a <= ord '~';
-	print  "\n";
+    printf " %.15s",$n if $is ne $n."";
+    print  " $r"       if $is ne $r."" && $n."" ne $r."";
+    printf " '%c'",$a  if $a >= ord ' ' && $a <= ord '~';
+    print  "\n";
 }
 
 if ($#ARGV != -1) {
-	compute $_ foreach (@ARGV);
+    compute $_ foreach (@ARGV);
 } else {
-	while (<>) {
-		compute($_);
-	}
+    while (<>) {
+        compute($_);
+    }
 }
