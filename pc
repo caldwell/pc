@@ -13,6 +13,13 @@ sub compute ($) {
 	eval { $is = $i->copy()->bfloor().""; };
 	$h = eval { "0x". comma(($i->as_hex =~ /0x(.*)/)[0],4);} || sprintf "%#x", $i;
 	printf comma($is,3). " $h %#o",$a;
+    if ($i > 1024) {
+        use POSIX;
+        my $exp = POSIX::floor(log($a)/log(1024));
+        my $s = $a / (1024**$exp);
+        $s =~ s/([\d.]{4}).*/$1/;
+        print " $s", [qw(B KB MB GB TB PB EB)]->[$exp];
+    }
 	printf " %.15s",$n if $is ne $n."";
 	print  " $r"       if $is ne $r."" && $n."" ne $r."";
 	printf " '%c'",$a  if $a >= ord ' ' && $a <= ord '~';
