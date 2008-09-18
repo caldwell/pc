@@ -11,8 +11,14 @@ sub compute ($) {
 	$a = eval($_[0]);
 	$is = "";
 	eval { $is = $i->copy()->bfloor().""; };
-	$h = eval { "0x". comma(($i->as_hex =~ /0x(.*)/)[0],4);} || sprintf "%#x", $i;
-	printf comma($is,3). " $h %#o",$a;
+	$hs = eval { $i->as_hex; } || sprintf "%#x", $i;
+	$ic = comma($is,3);
+	$hc = "0x". comma(($hs =~ /0x(.*)/)[0], 4);
+	print "$ic";
+	print " $is" if $ic ne $is;
+	print " $hc";
+	print " $hs" if $hc ne $hs;
+	printf " %#o", $a;
     if ($i > 1024) {
         use POSIX;
         my $exp = POSIX::floor(log($a)/log(1024));
