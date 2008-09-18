@@ -1,19 +1,22 @@
 #!/usr/bin/perl
 
+use strict;
+use warnings;
+
 sub revstr($) { join "", reverse split //, $_[0] } # Reverse the characters in a string.
 sub comma($$) { revstr join(",", unpack("(A$_[1])*", revstr($_[0]))) }
 
 sub compute ($) {
     $_[0] =~ s/\b(\d+)([kmgtpezy])/($1*1024**(index("kmgtpezy","$2")+1))/g;
-    $i = eval("use bigint; $_[0]");
-    $n = eval("use bignum; $_[0]");
-    $r = eval("use bigrat; $_[0]");
-    $a = eval($_[0]);
-    $is = "";
+    my $i = eval("use bigint; $_[0]");
+    my $n = eval("use bignum; $_[0]");
+    my $r = eval("use bigrat; $_[0]");
+    my $a = eval($_[0]);
+    my $is = "";
     eval { $is = $i->copy()->bfloor().""; };
-    $hs = eval { $i->as_hex; } || sprintf "%#x", $i;
-    $ic = comma($is,3);
-    $hc = "0x". comma(($hs =~ /0x(.*)/)[0], 4);
+    my $hs = eval { $i->as_hex; } || sprintf "%#x", $i;
+    my $ic = comma($is,3);
+    my $hc = "0x". comma(($hs =~ /0x(.*)/)[0], 4);
     print "$ic";
     print " $is" if $ic ne $is;
     print " $hc";
