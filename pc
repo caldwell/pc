@@ -11,7 +11,7 @@ sub compute ($) {
     my $i = eval("use bigint; $_[0]");
     my $n = eval("use bignum; $_[0]");
     my $r = eval("use bigrat; $_[0]");
-    my $a = eval($_[0]) || die;
+    my $a = eval($_[0]); die unless defined $a;
     my $is = "";
     eval { $is = $i->copy()->bfloor().""; };
     my $hs = eval { $i->as_hex; } || sprintf "%#x", $i;
