@@ -38,7 +38,18 @@ sub compute ($) {
 if ($#ARGV != -1) {
     compute $_ foreach (@ARGV);
 } else {
-    while (<>) {
-        compute($_);
+    if (eval "use Term::ReadLine;1;") {
+        my $term = new Term::ReadLine 'Perl Calc';
+        while (defined ($_ = $term->readline('pc] '))) {
+            next unless /\S/;
+            eval { compute($_) };
+            print "$@" if $@;
+            $term->addhistory($_);
+        }
+        print "\n";
+    } else {
+        while (<>) {
+            compute($_);
+        }
     }
 }
