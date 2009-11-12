@@ -1,3 +1,10 @@
+App::PerlCalc (1.0.1)
+
+  * Fix some perldoc mistakes.
+  * Add a README.
+
+ -- David Caldwell <david@porkrind.org>  Thu, 12 Nov 2009 04:35:03 -0800
+
 App::PerlCalc (1.0.0)
 
   * Initial CPAN release.
