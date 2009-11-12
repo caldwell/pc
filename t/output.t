@@ -17,6 +17,10 @@ my @test = ([ '1+3',     '4',             'simple addition works'],
 
 plan tests => scalar @test;
 
+# Test::Script::Run wants the exes in bin/ or t/bin/
+mkdir 't/bin';
+symlink '../../pc', 't/bin/pc';
+
 for (@test) {
     run_output_matches('pc', [$_->[0]], [qr/\b$_->[1]\b/], [''], $_->[3])
 }
