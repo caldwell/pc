@@ -1,3 +1,9 @@
+App::PerlCalc (1.0.2)
+
+  * Fix test trying to run pc from the PATH instead of the local copy.
+
+ -- David Caldwell <david@porkrind.org>  Thu, 12 Nov 2009 13:43:23 -0800
+
 App::PerlCalc (1.0.1)
 
   * Fix some perldoc mistakes.
