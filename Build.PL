@@ -7,5 +7,8 @@ Module::Build->new(
     recommends    => {
         Term::ReadLine => 0,
     },
+    build_requires => {
+        Test::Script::Run => 0,
+    },
     script_files => ['pc'],
 )->create_build_script;
