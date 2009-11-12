@@ -70,7 +70,7 @@ PC - Perl Calculator
 C<pc> is a quick and dirty command line perl calculator. Pass it an
 expression on the command line and it will print the result in a number of
 different formats. You can also run C<pc> with no command line parameters
-and it will run an interactive loop (using C<Term::ReadLine> if you have it
+and it will run an interactive loop (using C<L<Term::ReadLine>> if you have it
 installed).
 
 C<pc> is designed to give you all the output you ever could want without
@@ -138,13 +138,14 @@ uses Perl's "bigrat" library to do fractions:
   $ pc 1000*2000
   2,000,000 2000000 0x1e,8480 0x1e8480 07502200 1.90MB
 
-
-You'll notice that the integer and hex results are printed twice—one with
+You'll notice that the integer and hex results are printed twice--one with
 commas and one without. The one with commas is so that you the human can
 read the output easily. The one without commas is for copying and
 pasting. You should also notice that C<pc> helpfully told you the number was
 1.90MB. If a number is bigger than 1024 (1KB) it will print it in human
-readable byte quantity.  Power of 2 magnitude suffixes
+readable byte quantity.
+
+=head2 Power of 2 magnitude suffixes
 
 It also accepts magnitude suffixes on the input:
 
