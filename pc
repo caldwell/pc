@@ -87,7 +87,9 @@ you. Same with the fractions.
   14 0xe 016
 
 The first number is the integer result, followed by the hex and octal
-representations. Simple enough.  Order of operations
+representations. Simple enough.
+
+=head2 Order of operations
 
 This shows that C<pc> uses Perl's order of operations (operator precedence if
 you are in a programming mood):
