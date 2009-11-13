@@ -156,9 +156,10 @@ It also accepts magnitude suffixes on the input:
   $ pc 16m
   16,777,216 16777216 0x100,0000 0x1000000 0100000000 16MB
 
-The following suffixes are allowed: kmgtpezy (lowercase, no b). Note that
-the human readable output "16MB" doesn't have a decimal point. It will
-remove the decimal point if the number is exactly that value. So:
+The following suffixes are allowed: kmgtpezy (lower or upper case, with or
+without a trailing "b"). Note that the human readable output "16MB" doesn't
+have a decimal point. It will remove the decimal point if the number is
+exactly that value. So:
 
   $ pc 16m+1
   16,777,217 16777217 0x100,0001 0x1000001 0100000001 16.0MB
