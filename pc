@@ -10,12 +10,13 @@ sub comma($$) { revstr join(",", unpack("(A$_[1])*", revstr($_[0]))) }
 
 sub compute ($) {
     $_[0] =~ s/\b([\d.]+)([kmgtpezy])/($1*1024**(index("kmgtpezy","$2")+1))/g;
-    my $i = eval("use bigint; $_[0]");
-    my $n = eval("use bignum; $_[0]");
-    my $r = eval("use bigrat; $_[0]");
     my $a = eval($_[0]); die unless defined $a;
+    my $i = eval("use bigint; $_[0];"); $i = $a unless defined $i;
+    my $n = eval("use bignum; $_[0];"); $n = $a unless defined $n;
+    my $r = eval("use bigrat; $_[0];"); $r = $a unless defined $r;
     my $is = "";
     eval { $is = $i->copy()->bfloor().""; };
+    $is = int $i if $@;
     my $hs = eval { $i->as_hex; } || sprintf "%#x", $i;
     my $ic = comma($is,3);
     my $hc = "0x". comma(($hs =~ /0x(.*)/)[0], 4);
