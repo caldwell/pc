@@ -28,14 +28,15 @@ sub compute ($) {
     if ($i > 1024) {
         use POSIX;
         use List::Util 'min';
+        my @pow2 = qw(B KB MB GB TB PB EB);
         # This is weird beause we can't use a bigint directly since log(bigint(1<<400))
         # takes hours (literally). So we convert into a perl scalar so we can use fast
         # floating point log() (the precision we lose going to a scalar doesn't matter
         # in the context of log()) and then convert back to a bigint for the pow().
-        my $exp = Math::BigInt->new(min(6, POSIX::floor(log($i->numify)/log(1024))));
+        my $exp = Math::BigInt->new(min($#pow2, POSIX::floor(log($i->numify)/log(1024))));
         my $s = $i / (1024 ** $exp);
         $s =~ s/([\d.]{4}).*/$1/;
-        print " $s", [qw(B KB MB GB TB PB EB)]->[$exp];
+        print " $s", $pow2[$exp];
     }
     printf " %.15s",$n if $is ne $n."";
     print  " $r"       if $is ne $r."" && $n."" ne $r."";
