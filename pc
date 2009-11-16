@@ -27,7 +27,8 @@ sub compute ($) {
     printf " %#o", $a;
     if ($i > 1024) {
         use POSIX;
-        my $exp = POSIX::floor(log($a)/log(1024));
+        use List::Util 'min';
+        my $exp = min(6, POSIX::floor(log($a)/log(1024)));
         my $s = $a / (1024**$exp);
         $s =~ s/([\d.]{4}).*/$1/;
         print " $s", [qw(B KB MB GB TB PB EB)]->[$exp];
