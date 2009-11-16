@@ -28,7 +28,7 @@ sub compute ($) {
     if ($n > 1024) {
         use POSIX;
         use List::Util 'min';
-        my @pow2 = qw(B KB MB GB TB PB EB);
+        my @pow2 = qw(B KB MB GB TB PB EB ZB YB);
         # This is weird beause we can't use a bigint directly since log(bigint(1<<400))
         # takes hours (literally). So we convert into a perl scalar so we can use fast
         # floating point log() (the precision we lose going to a scalar doesn't matter
