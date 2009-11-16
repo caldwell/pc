@@ -20,6 +20,7 @@ my @test = ([ '1+3',     '4',             'simple addition'],
             [ '1<<40',   '0x10000000000', 'bigint'],
             [ '1<<70',   '1ZB',           'Really bigint'],
             [ '1<<80',   '1YB',           'Really really bigint'],
+            [ '1<<150',  '1.18e\+21YB',   'Really really really bigint'],
            );
 
 plan tests => scalar @test;
