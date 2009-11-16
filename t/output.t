@@ -22,5 +22,5 @@ mkdir 't/bin';
 symlink '../../pc', 't/bin/pc';
 
 for (@test) {
-    run_output_matches('pc', [$_->[0]], [qr/\b$_->[1]\b/], [''], $_->[3])
+    run_output_matches('pc', [$_->[0]], [qr/\b$_->[1]\b/], [''], $_->[2])
 }
