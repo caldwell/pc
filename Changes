@@ -1,3 +1,10 @@
+App::PerlCalc (1.1.0)
+
+  * Handle bigint failing better.
+  * Revamp power of 2 input and output support.
+
+ -- David Caldwell <david@porkrind.org>  Mon, 16 Nov 2009 14:07:33 -0800
+
 App::PerlCalc (1.0.2)
 
   * Fix test trying to run pc from the PATH instead of the local copy.
