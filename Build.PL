@@ -4,6 +4,9 @@ Module::Build->new(
     dist_version_from => 'pc',
     license     => 'perl',
     dist_author => 'David Caldwell <david@porkrind.org>',
+    requires      => {
+        perl => '5.8.0',
+    },
     recommends    => {
         Term::ReadLine => 0,
     },
