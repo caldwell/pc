@@ -1,3 +1,9 @@
+App::PerlCalc (1.1.1)
+
+  * Need at least perl 5.8.0 so I can use parens in pack().
+
+ -- David Caldwell <david@porkrind.org>  Tue, 17 Nov 2009 10:27:11 -0800
+
 App::PerlCalc (1.1.0)
 
   * Handle bigint failing better.
