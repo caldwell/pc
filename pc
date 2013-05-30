@@ -46,6 +46,7 @@ sub compute ($) {
     printf " %.15s",$n if $is ne $n."";
     print  " $r"       if $is ne $r."" && $n."" ne $r."";
     printf " '%c'",$a  if $a >= ord ' ' && $a <= ord '~';
+    printf " %b", $i   if $i < 0x10000;
     print  "\n";
 }
 
