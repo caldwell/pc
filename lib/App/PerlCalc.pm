@@ -2,7 +2,7 @@
 
 package App::PerlCalc;
 
-our $VERSION = '1.1.1';
+our $VERSION = '1.2.0';
 
 __END__
 

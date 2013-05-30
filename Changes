@@ -1,3 +1,10 @@
+App::PerlCalc (1.2.0)
+
+  * Add Binary output when the integer fits in 16 bits.
+  * Small comment and documentation changes.
+
+ -- David Caldwell <david@porkrind.org>  Thu, 30 May 2013 02:07:57 -0700
+
 App::PerlCalc (1.1.1)
 
   * Need at least perl 5.8.0 so I can use parens in pack().
