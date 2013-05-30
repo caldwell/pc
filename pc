@@ -186,6 +186,13 @@ C<pc> uses Perl's bigint so that it can handle numbers bigger than 32 bits:
   $ pc '1<<40'
   1,099,511,627,776 1099511627776 0x100,0000,0000 0x10000000000 020000000000000 1TB
 
+=head2 Trancendental and trignomentric functions
+
+C<pc> gives you access to all the Perl math functions:
+
+  $ pc 'sin(3.141592) ** .5'
+  1 0x1 0 0.0008084490047 1.772453666531229808666207156690905830337 1
+
 =head2 Random Perl code
 
   $ pc 'ord("a")'
