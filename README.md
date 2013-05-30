@@ -1,21 +1,25 @@
 App::PerlCalc
 -------------
-C<pc> is a quick and dirty command line perl calculator. Pass it an
+
+`pc` is a quick and dirty command line perl calculator. Pass it an
 expression on the command line and it will print the result in a number of
 different formats.
 
 For full documentation, run:
-  perldoc ./pc
+
+    perldoc ./pc
+
 
 Installation
 ------------
 
 To build, test and install:
 
- perl Build.PL
-  ./Build
-  ./Build test
-  ./Build install
+    perl Build.PL
+    ./Build
+    ./Build test
+    ./Build install
+
 
 License
 -------
