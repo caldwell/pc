@@ -3,7 +3,6 @@
 
 use strict;
 use warnings;
-our $VERSION = '1.1.1';
 
 sub revstr($) { join "", reverse split //, $_[0] } # Reverse the characters in a string.
 sub comma($$) { revstr join(",", unpack("(A$_[1])*", revstr($_[0]))) }
