@@ -126,7 +126,7 @@ We also get Perl (and C) style bitwise operators:
   $ pc '1+3*20<<2 & 0xff'
   244 0xf4 0364
 
-Also notice that we had to quote it since (a) I put a space in the
+Also notice that I had to quote it since (a) I put a space in the
 expression and (b) I used the '<' and '&' characters which mean something to
 the shell.
 
