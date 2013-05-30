@@ -1,0 +1,6 @@
+MANIFEST
+blib/
+*~
+META.yml
+MYMETA.yml
+_build/
