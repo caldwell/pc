@@ -8,7 +8,7 @@ sub revstr($) { join "", reverse split //, $_[0] } # Reverse the characters in a
 sub comma($$) { revstr join(",", unpack("(A$_[1])*", revstr($_[0]))) }
 
 sub compute ($) {
-    $_[0] =~ s/\b([\d.]+)([kmgtpezyKMGTPEZY])[bB]?/($1*1024**(index("kmgtpezy",lc "$2")+1))/g;
+    $_[0] =~ s/\b([\d.]+)([kmgtpezyKMGTPEZY])[bB]?/($1*1024**index("_kmgtpezy",lc "$2"))/g;
     my $a = eval($_[0]); die unless defined $a;
     my $i = eval("use bigint; $_[0];"); $i = $a unless defined $i;
     my $n = eval("use bignum; $_[0];"); $n = $a unless defined $n;
